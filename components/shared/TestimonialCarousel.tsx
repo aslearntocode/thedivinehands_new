@@ -34,9 +34,11 @@ export default function TestimonialCarousel() {
                   />
                 </div>
               )}
-              <p className="text-gray-600 text-center mb-6 italic">
-                "{testimonials[currentIndex].content}"
-              </p>
+              <div>
+                <p className="text-gray-600 italic mb-4">
+                  &ldquo;{testimonials[currentIndex].content}&rdquo;
+                </p>
+              </div>
               <div className="text-center">
                 <h4 className="font-semibold text-lg">{testimonials[currentIndex].name}</h4>
                 <p className="text-gray-500">{testimonials[currentIndex].role}</p>

@@ -295,7 +295,7 @@ export default function TiffinPage() {
 
         {/* Weekly Menu */}
         <div className="max-w-6xl mx-auto px-4">
-          {Object.entries(weeklyMenu).map(([day, meals]) => (
+          {filteredMenu.map(([day, meals]) => (
             <div 
               key={day} 
               id={day}

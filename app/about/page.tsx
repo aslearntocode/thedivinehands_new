@@ -7,7 +7,7 @@ export default function About() {
         <div className="space-y-6 text-gray-700">
           <p className="text-justify">
             A journey of a thousand miles begins with a single step. This is true both literally 
-            and metaphorically for the founder of the company 'The Divine Hands'. Akansha started 
+            and metaphorically for the founder of the company &apos;The Divine Hands&apos;. Akansha started 
             with her travel diaries in the year 2011 and has had the fortune of not just visiting 
             but living and experiencing at length the culture and ethos of various geographies 
             including UAE, US and UK. Experience being the biggest teacher, she learned a plethora 
@@ -17,11 +17,11 @@ export default function About() {
 
           <p className="text-justify">
             Homemade and healthier food products are the most coveted both in/outside India but 
-            due to the extreme rarity of such options, people don't have access to this variety. 
+            due to the extreme rarity of such options, people don&apos;t have access to this variety. 
             Driven by her love for food and her supply-demand deficit comprehension, Akansha 
             decided to bridge this gap through her platform. This platform celebrates home chefs, 
-            their creativity and culture. Akansha being a strong believer of the fact that 'Food 
-            is the ultimate love language'- she is starting with serving India but wants to export 
+            their creativity and culture. Akansha being a strong believer of the fact that &apos;Food 
+            is the ultimate love language&apos;- she is starting with serving India but wants to export 
             the flavours and nostalgia of homemade food products to other countries as well.
           </p>
 

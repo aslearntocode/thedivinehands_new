@@ -34,7 +34,7 @@ export default function ApplyPage() {
           about: ''
         });
       }
-    } catch (error) {
+    } catch (_error) {
       alert('There was an error submitting your application. Please try again.');
     }
   };
