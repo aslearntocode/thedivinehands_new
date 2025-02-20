@@ -58,7 +58,14 @@ const bakersData = {
   // Add more bakers here with the same structure
 };
 
-export default function BakerPage({ params }: { params: { id: string } }) {
+// Define the correct type for the page props
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default function BakerPage({ params }: PageProps) {
   const baker = bakersData[params.id];
 
   if (!baker) {
@@ -131,4 +138,9 @@ export default function BakerPage({ params }: { params: { id: string } }) {
       </section>
     </main>
   );
+}
+
+// If you're using generateMetadata, update its type as well
+export async function generateMetadata({ params }: PageProps) {
+  // ... existing code ...
 } 
