@@ -66,7 +66,8 @@ type PageProps = {
 };
 
 export default function BakerPage({ params }: PageProps) {
-  const baker = bakersData[params.id];
+  const bakerId = params.id;
+  const baker = bakersData[bakerId];
 
   if (!baker) {
     notFound();
@@ -140,7 +141,11 @@ export default function BakerPage({ params }: PageProps) {
   );
 }
 
-// If you're using generateMetadata, update its type as well
 export async function generateMetadata({ params }: PageProps) {
-  // ... existing code ...
+  const baker = bakersData[params.id];
+  
+  return {
+    title: baker ? `${baker.name} - The Divine Hands` : 'Baker - The Divine Hands',
+    description: baker?.bio || 'Baker profile at The Divine Hands'
+  };
 } 

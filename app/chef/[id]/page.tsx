@@ -126,8 +126,15 @@ const chefsData = {
   }
 };
 
-export default function ChefProfile({ params }: { params: { id: string } }) {
-  const chef = chefsData[params.id as keyof typeof chefsData];
+type PageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export default function ChefPage({ params }: PageProps) {
+  const chefId = params.id;
+  const chef = chefsData[chefId as keyof typeof chefsData];
 
   if (!chef) {
     notFound();
@@ -199,4 +206,13 @@ export default function ChefProfile({ params }: { params: { id: string } }) {
       </section>
     </main>
   );
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const chef = chefsData[params.id as keyof typeof chefsData];
+  
+  return {
+    title: chef ? `${chef.name} - The Divine Hands` : 'Chef - The Divine Hands',
+    description: chef?.bio || 'Chef profile at The Divine Hands'
+  };
 }
