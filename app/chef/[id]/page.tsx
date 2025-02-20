@@ -127,9 +127,8 @@ const chefsData = {
 };
 
 type PageProps = {
-  params: {
-    id: string;
-  };
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export default function ChefPage({ params }: PageProps) {
@@ -208,7 +207,7 @@ export default function ChefPage({ params }: PageProps) {
   );
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params, searchParams }: PageProps) {
   const chef = chefsData[params.id as keyof typeof chefsData];
   
   return {
