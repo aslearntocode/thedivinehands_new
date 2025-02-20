@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFD700;
+}
+
+/* Custom utility classes */
+@layer components {
+    .btn-primary {
+        @apply px-4 py-2 bg-yellow-400 text-gray-800 rounded-md hover:bg-yellow-500 transition-colors;
+    }
+
+    .container-padding {
+        @apply px-4 md:px-6 lg:px-8;
+    }
+}

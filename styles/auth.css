@@ -1,0 +1,49 @@
+/* Auth Button Styles */
+.auth-button {
+    background-color: #FFD700;
+    color: #333;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.auth-button:hover {
+    background-color: #FFC800;
+    transform: translateY(-2px);
+}
+
+/* User Profile Styles */
+#userProfile {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+/* Dropdown Styles */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    margin-top: 10px;
+}
+
+/* ... rest of the auth-related styles ... */ 
