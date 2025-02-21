@@ -8,7 +8,7 @@ const bakers = [
     specialty: 'Stuffed eggless breads',
     imageUrl: '/images/Juhi_Kastiya.jpg',
     fallbackImage: 'https://placehold.co/400x400?text=Baker+Juhi',
-    profileLink: '/baker/juhi-kastiya',
+    profileLink: '/baker',
     isProfileReady: true
   },
   {

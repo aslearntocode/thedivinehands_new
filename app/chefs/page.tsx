@@ -7,7 +7,7 @@ const chefs = [
     name: 'Chef Urmila Saud',
     specialty: 'Multi Cuisine',
     imageUrl: '/images/chef_urmila.png',
-    profileLink: '/chef/urmila',
+    profileLink: '/chef',
     isProfileReady: true
   },
   {
@@ -15,7 +15,7 @@ const chefs = [
     name: 'Chef Anjali Broor',
     specialty: 'Multi Cuisine',
     imageUrl: '/images/Anjali_Broor.jpeg',
-    profileLink: '/chef/anjali',
+    profileLink: '/chef',
     isProfileReady: true
   },
   {
@@ -23,7 +23,7 @@ const chefs = [
     name: 'Chef Ruchita',
     specialty: 'Healthy Treats',
     imageUrl: '/images/placeholder-chef.png',
-    profileLink: '/chef/ruchita',
+    profileLink: '/chef',
     isProfileReady: true
   },
   {
