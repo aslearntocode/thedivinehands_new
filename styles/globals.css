@@ -2,16 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #FFD700;
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+  }
+
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply min-h-full text-[rgb(var(--foreground-rgb))] bg-[rgb(var(--background-start-rgb))];
+    font-family: var(--font-poppins), sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .main-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-h-screen;
+  }
+
+  .nav-links {
+    @apply flex gap-6 items-center;
+  }
+
+  .nav-links a {
+    @apply whitespace-nowrap text-gray-800 hover:text-gray-600 transition-colors;
+  }
+
+  .navbar {
+    @apply sticky top-0 z-50 bg-white shadow-md w-full backdrop-filter: blur(5px);
+  }
+
+  .hero-section {
+    @apply relative z-40 w-full;
+  }
 }
 
 /* Custom utility classes */
