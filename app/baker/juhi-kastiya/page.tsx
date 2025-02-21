@@ -52,6 +52,12 @@ const bakerData = {
   ]
 };
 
+// Move metadata export before the default export
+export const metadata = {
+  title: 'Baker Juhi Kastiya - The Divine Hands',
+  description: 'Specializing in stuffed eggless breads with 9+ years of experience'
+};
+
 export default function Page() {
   return (
     <main className="min-h-screen">
@@ -119,10 +125,4 @@ export default function Page() {
       </section>
     </main>
   );
-}
-
-// Static metadata export
-export const metadata = {
-  title: 'Baker Juhi Kastiya - The Divine Hands',
-  description: 'Specializing in stuffed eggless breads with 9+ years of experience'
-}; 
+} 

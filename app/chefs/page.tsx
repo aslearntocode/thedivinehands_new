@@ -7,7 +7,7 @@ const chefs = [
     name: 'Chef Urmila Saud',
     specialty: 'Multi Cuisine',
     imageUrl: '/images/chef_urmila.png',
-    profileLink: '/chef',
+    profileLink: '/chef/urmila',
     isProfileReady: true
   },
   {
@@ -15,7 +15,7 @@ const chefs = [
     name: 'Chef Anjali Broor',
     specialty: 'Multi Cuisine',
     imageUrl: '/images/Anjali_Broor.jpeg',
-    profileLink: '/chef',
+    profileLink: '/chef/anjali',
     isProfileReady: true
   },
   {
@@ -51,21 +51,23 @@ export default function ChefsPage() {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {chefs.map((chef) => (
-          <div key={chef.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-[300px] w-full">
+          <div key={chef.id} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+            <div className="relative w-full aspect-[4/3]">
               <Image
                 src={chef.imageUrl}
                 alt={chef.name}
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 priority={chef.id === 'urmila' || chef.id === 'anjali'}
               />
             </div>
             
-            <div className="p-5">
-              <h2 className="text-xl font-semibold mb-2">{chef.name}</h2>
-              <p className="text-gray-600 mb-4">Specialty: {chef.specialty}</p>
+            <div className="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h2 className="text-xl font-semibold mb-2">{chef.name}</h2>
+                <p className="text-gray-600 mb-4">Specialty: {chef.specialty}</p>
+              </div>
               
               {chef.isProfileReady ? (
                 <Link 
