@@ -12,13 +12,13 @@ const bakers = [
     isProfileReady: true
   },
   {
-    id: 'coming-soon-1',
-    name: 'Coming Soon',
-    specialty: 'TBA',
-    imageUrl: 'https://placehold.co/200x200?text=Coming+Soon',
-    description: 'New baker joining our team soon!',
-    profileLink: '#',
-    isProfileReady: false
+    id: 'ruchita-shah',
+    name: 'Baker Ruchita Shah',
+    specialty: 'Healthy & Delicious Treats',
+    imageUrl: '/images/Ruchita_Shah.jpg',
+    fallbackImage: 'https://placehold.co/400x400?text=Baker+Ruchita',
+    profileLink: '/baker/ruchita-shah',
+    isProfileReady: true
   },
   {
     id: 'coming-soon-2',

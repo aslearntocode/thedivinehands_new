@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 // Static baker data
 const bakerData = {
@@ -52,13 +55,43 @@ const bakerData = {
   ]
 };
 
-// Move metadata export before the default export
-export const metadata = {
-  title: 'Baker Juhi Kastiya - The Divine Hands',
-  description: 'Specializing in stuffed eggless breads with 9+ years of experience'
+type OrderItem = {
+  name: string;
+  price: number;
+  quantity: number;
 };
 
 export default function Page() {
+  const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
+
+  const getNumericPrice = (priceStr: string) => {
+    return parseInt(priceStr.replace('₹', ''));
+  };
+
+  const handleQuantityChange = (itemName: string, price: string, quantity: number) => {
+    const numericPrice = getNumericPrice(price);
+    
+    setOrderItems(prev => {
+      const existingItem = prev.find(item => item.name === itemName);
+      if (existingItem) {
+        if (quantity === 0) {
+          return prev.filter(item => item.name !== itemName);
+        }
+        return prev.map(item => 
+          item.name === itemName ? { ...item, quantity } : item
+        );
+      }
+      if (quantity > 0) {
+        return [...prev, { name: itemName, price: numericPrice, quantity }];
+      }
+      return prev;
+    });
+  };
+
+  const subtotal = orderItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const deliveryFee = subtotal < 1000 ? 100 : 0;
+  const total = subtotal + deliveryFee;
+
   return (
     <main className="min-h-screen">
       <section className="max-w-7xl mx-auto px-4 py-16">
@@ -89,7 +122,7 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Menu Section */}
+        {/* Modified Menu Section */}
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-8">Menu Selection</h2>
           
@@ -104,7 +137,18 @@ export default function Page() {
                   >
                     <h4 className="text-lg font-semibold mb-2">{item.name}</h4>
                     <p className="text-gray-600 mb-4">{item.description}</p>
-                    <p className="text-yellow-600 font-semibold">{item.price}</p>
+                    <p className="text-yellow-600 font-semibold mb-3">{item.price}</p>
+                    <div className="flex items-center gap-2">
+                      <label htmlFor={`quantity-${itemIndex}`} className="text-sm">Quantity:</label>
+                      <input
+                        type="number"
+                        id={`quantity-${itemIndex}`}
+                        min="0"
+                        value={orderItems.find(orderItem => orderItem.name === item.name)?.quantity || 0}
+                        onChange={(e) => handleQuantityChange(item.name, item.price, parseInt(e.target.value) || 0)}
+                        className="w-20 px-2 py-1 border rounded"
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -112,14 +156,57 @@ export default function Page() {
           ))}
         </div>
 
-        {/* Order Button */}
+        {/* Order Summary Section */}
+        {orderItems.length > 0 && (
+          <div className="mb-16 bg-gray-50 p-6 rounded-lg">
+            <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
+            {orderItems.map((item, index) => (
+              <div key={index} className="flex justify-between mb-2">
+                <span>{item.name} x {item.quantity}</span>
+                <span>₹{item.price * item.quantity}</span>
+              </div>
+            ))}
+            <div className="border-t mt-4 pt-4">
+              <div className="flex justify-between mb-2">
+                <span>Subtotal</span>
+                <span>₹{subtotal}</span>
+              </div>
+              <div className="flex justify-between mb-2">
+                <span>Delivery Fee {subtotal < 1000 && '(Free delivery above ₹1000)'}</span>
+                <span>₹{deliveryFee}</span>
+              </div>
+              <div className="flex justify-between font-bold mt-2 pt-2 border-t">
+                <span>Total</span>
+                <span>₹{total}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Replace WhatsApp Order Button with Place Order Button */}
         <div className="text-center">
           <Link
-            href="https://wa.me/919136033288?text=Hi,%20I%20would%20like%20to%20order%20from%20your%20menu"
-            target="_blank"
-            className="inline-block bg-yellow-400 text-gray-800 px-8 py-3 rounded-md hover:bg-yellow-500 transition-colors"
+            href={{
+              pathname: '/place-order',
+              query: {
+                items: JSON.stringify(orderItems),
+                subtotal: subtotal,
+                deliveryFee: deliveryFee,
+                total: total,
+                vendorName: bakerData.name // Add vendor name to know who's receiving the order
+              }
+            }}
+            className={`inline-block bg-yellow-400 text-gray-800 px-8 py-3 rounded-md hover:bg-yellow-500 transition-colors ${
+              orderItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+            onClick={(e) => {
+              if (orderItems.length === 0) {
+                e.preventDefault();
+                alert('Please select at least one item to order');
+              }
+            }}
           >
-            Order via WhatsApp
+            Place Order
           </Link>
         </div>
       </section>

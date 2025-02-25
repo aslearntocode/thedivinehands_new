@@ -4,51 +4,121 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-// Static chef data
-const chefData = {
-  name: "Chef Urmila Saud",
-  specialty: "Multi Cuisine",
-  imageUrl: "/images/chef_urmila.png",
-  experience: "15+ Years Experience",
-  bio: "Experienced chef specializing in multi-cuisine dishes with expertise in Indian, Chinese, and Continental cuisines. Known for creating delicious home-style meals that bring comfort and satisfaction to every plate.",
+// Static baker data
+const bakerData = {
+  name: "Baker Ruchita Shah",
+  specialty: "Healthy & Delicious Treats",
+  imageUrl: "/images/Ruchita_Shah.jpg",
+  experience: "5+ Years Experience",
+  bio: "Specializing in healthy and delicious treats, from homemade granola to vegan date fudge. All products are made with natural ingredients and minimal processing.",
   menu: [
     {
-      category: "Daily Meals",
+      category: "Granola",
       items: [
         {
-          name: "Standard Thali",
-          description: "Complete meal with 2 sabzi, dal, rice, and 4 rotis",
-          price: "₹200"
-        },
-        {
-          name: "Premium Thali",
-          description: "Deluxe meal with 3 sabzi, dal fry, pulao, and 4 rotis",
-          price: "₹250"
-        },
-        {
-          name: "Mini Meal",
-          description: "Light meal with 1 sabzi, dal, rice, and 2 rotis",
-          price: "₹150"
+          name: "Nut & Berries (150gms)",
+          description: "Healthy and delicious granola mix",
+          price: "₹350"
         }
       ]
     },
     {
-      category: "Special Items",
+      category: "Small Cookies",
       items: [
         {
-          name: "Paneer Special",
-          description: "Choice of paneer dish with butter naan",
-          price: "₹300"
-        },
-        {
-          name: "Chinese Combo",
-          description: "Noodles/fried rice with manchurian",
+          name: "Oats & Jaggery (12pcs)",
+          description: "Oats mixed with jaggery for a sweet treat",
           price: "₹250"
+        }
+      ]
+    },
+    {
+      category: "Stuffed Dates",
+      items: [
+        {
+          name: "Roasted Almonds (6pcs)",
+          description: "Dates stuffed with roasted almonds",
+          price: "₹200"
         },
         {
-          name: "South Indian Platter",
-          description: "Dosa/Idli with sambar and chutney",
+          name: "Roasted Walnuts (6pcs)",
+          description: "Dates stuffed with roasted walnuts",
           price: "₹200"
+        }
+      ]
+    },
+    {
+      category: "Almond Rocks/Barks",
+      items: [
+        {
+          name: "Roasted Almond (200gms)",
+          description: "Roasted almonds coated in rich dark chocolate",
+          price: "₹400"
+        },
+        {
+          name: "Spicy Chilly (200gms)",
+          description: "Roasted almonds coated in spicy dark chocolate",
+          price: "₹400"
+        }
+      ]
+    },
+    {
+      category: "Vegan Date Fudge",
+      items: [
+        {
+          name: "Walnut Date Fudge (200gms)",
+          description: "Goodness of dates, almond butter, and walnuts packed in one",
+          price: "₹400"
+        },
+        {
+          name: "Almond Date Fudge (200gms)",
+          description: "Goodness of dates, almond butter, and almonds packed in one",
+          price: "₹400"
+        }
+      ]
+    },
+    {
+      category: "Mini Button Cookies",
+      items: [
+        {
+          name: "Cookies & Cream (12pcs)",
+          description: "Almost too cute to eat!",
+          price: "₹250"
+        }
+      ]
+    },
+    {
+      category: "Large Cookies",
+      items: [
+        {
+          name: "Triple Chocolate Chip (6pcs)",
+          description: "One for the cheat day!",
+          price: "₹360"
+        },
+        {
+          name: "Dark Chocolate Chunk (6pcs)",
+          description: "One for the cheat day!",
+          price: "₹360"
+        }
+      ]
+    },
+    {
+      category: "Stroop Waffles",
+      items: [
+        {
+          name: "Stroop Waffles (10pcs)",
+          description: "Homemade chocolate paste sandwiched between crunchy stroops",
+          price: "₹250"
+        }
+      ]
+    },
+    {
+      category: "Liquid Jaggery",
+      items: [
+        {
+          name: "Liquid Jaggery (200ml)",
+          description: "Available only from November-March",
+          price: "₹170"
         }
       ]
     }
@@ -95,13 +165,13 @@ export default function Page() {
   return (
     <main className="min-h-screen">
       <section className="max-w-7xl mx-auto px-4 py-16">
-        {/* Chef Profile Section */}
+        {/* Baker Profile Section */}
         <div className="flex flex-col md:flex-row gap-8 mb-16">
           <div className="w-full md:w-1/3">
             <div className="relative h-[400px] rounded-lg overflow-hidden">
               <Image
-                src={chefData.imageUrl}
-                alt={chefData.name}
+                src={bakerData.imageUrl}
+                alt={bakerData.name}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 33vw"
@@ -111,14 +181,14 @@ export default function Page() {
           </div>
           
           <div className="w-full md:w-2/3">
-            <h1 className="text-3xl font-bold mb-4">{chefData.name}</h1>
-            <p className="text-xl text-yellow-600 mb-4">Specialty: {chefData.specialty}</p>
+            <h1 className="text-3xl font-bold mb-4">{bakerData.name}</h1>
+            <p className="text-xl text-yellow-600 mb-4">Specialty: {bakerData.specialty}</p>
             <div className="flex gap-4 mb-6">
               <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">
-                {chefData.experience}
+                {bakerData.experience}
               </span>
             </div>
-            <p className="text-gray-700 mb-8">{chefData.bio}</p>
+            <p className="text-gray-700 mb-8">{bakerData.bio}</p>
           </div>
         </div>
 
@@ -126,7 +196,7 @@ export default function Page() {
         <div className="mb-16">
           <h2 className="text-2xl font-bold mb-8">Menu Selection</h2>
           
-          {chefData.menu.map((section, index) => (
+          {bakerData.menu.map((section, index) => (
             <div key={index} className="mb-12">
               <h3 className="text-xl font-semibold mb-6">{section.category}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -183,15 +253,19 @@ export default function Page() {
           </div>
         )}
 
-        {/* Modified Order Button */}
+        {/* Replace WhatsApp Order Button with Place Order Button */}
         <div className="text-center">
           <Link
-            href={`https://wa.me/919136033288?text=${encodeURIComponent(
-              `Hi, I would like to order:\n${orderItems.map(item => 
-                `${item.name} x ${item.quantity}`
-              ).join('\n')}\n\nTotal: ₹${total} (including delivery fee)`
-            )}`}
-            target="_blank"
+            href={{
+              pathname: '/place-order',
+              query: {
+                items: JSON.stringify(orderItems),
+                subtotal: subtotal,
+                deliveryFee: deliveryFee,
+                total: total,
+                vendorName: bakerData.name // Add vendor name to know who's receiving the order
+              }
+            }}
             className={`inline-block bg-yellow-400 text-gray-800 px-8 py-3 rounded-md hover:bg-yellow-500 transition-colors ${
               orderItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''
             }`}
@@ -202,10 +276,10 @@ export default function Page() {
               }
             }}
           >
-            Order via WhatsApp
+            Place Order
           </Link>
         </div>
       </section>
     </main>
   );
-} 
+}
