@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 
 type OrderItem = {
@@ -21,7 +21,8 @@ type FormData = {
   specialInstructions: string;
 };
 
-export default function PlaceOrderPage() {
+// Separate OrderForm component
+function OrderForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   
@@ -53,8 +54,6 @@ export default function PlaceOrderPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Here you would typically send the order to your backend
-    // For now, we'll just console.log the order details
     const orderDetails = {
       items,
       subtotal,
@@ -67,7 +66,6 @@ export default function PlaceOrderPage() {
     console.log('Order Details:', orderDetails);
     
     // TODO: Add your API call here to submit the order
-    // After successful submission, redirect to confirmation page
     router.push('/order-confirmation');
   };
 
@@ -220,5 +218,20 @@ export default function PlaceOrderPage() {
         </div>
       </form>
     </div>
+  );
+}
+
+// Main page component with Suspense
+export default function PlaceOrderPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="text-center">
+          <p className="text-xl">Loading order details...</p>
+        </div>
+      </div>
+    }>
+      <OrderForm />
+    </Suspense>
   );
 } 
